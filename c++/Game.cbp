@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Game" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Game" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DSFML_STATIC" />
+					<Add directory="C:/Users/Stanisław/Desktop/PROgramming/SFML-2.3.2/include" />
+				</Compiler>
+				<Linker>
+					<Add library="sfml-window-s-d" />
+					<Add library="sfml-graphics-s-d" />
+					<Add library="jpeg" />
+					<Add library="opengl32" />
+					<Add library="sfml-system-s-d" />
+					<Add library="winmm" />
+					<Add library="freetype" />
+					<Add library="gdi32" />
+					<Add directory="C:/Users/Stanisław/Desktop/PROgramming/SFML-2.3.2/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Game" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="Drawable.cpp" />
+		<Unit filename="Game.cpp" />
+		<Unit filename="Level.cpp" />
+		<Unit filename="MainLoop.cpp" />
+		<Unit filename="Menu.cpp" />
+		<Unit filename="Pickable.cpp" />
+		<Unit filename="headers/Drawable.h" />
+		<Unit filename="headers/Game.h" />
+		<Unit filename="headers/Level.h" />
+		<Unit filename="headers/Menu.h" />
+		<Unit filename="headers/Pickable.h" />
+		<Unit filename="headers/logicEngine.h" />
+		<Unit filename="headers/renderEngine.h" />
+		<Unit filename="logicEngine.cpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="renderEngine.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
