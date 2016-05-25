@@ -15,9 +15,9 @@ class Game
 public:
     Game(Vector2f v);
     ~Game();
-    void start();
-    void game();
-    void menu();
+    void start();//game manager
+    void game();//game loop
+    void menu();//menu loop
 
     enum State {MENU, GAME, PAUSE, WON, END};
     State game_state;

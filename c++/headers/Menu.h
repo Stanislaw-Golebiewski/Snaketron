@@ -12,11 +12,11 @@ public:
     Menu(sf::Vector2f);
     ~Menu();
 
-    void MoveUp();
-    void MoveDown();
+    void MoveUp();//navigate through menu
+    void MoveDown();//
     void draw(sf::RenderWindow &window);
-    sf::Text text[MAX_MENU_ITEMS+1];
-    short getActive();
+    sf::Text text[MAX_MENU_ITEMS+1];//all text objects witch will be display on menu screen
+    short getActive();//returns active (highlighted) element
 
 private:
     sf::Font font;

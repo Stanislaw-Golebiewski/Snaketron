@@ -13,7 +13,6 @@ public:
     short getWidth();
     short getHeight();
     sf::Vector2f getTileSize();
-    //bool **field;
     void loadFromFile(string);
     void printLog();
     void update(vector<sf::Vector2f>);
