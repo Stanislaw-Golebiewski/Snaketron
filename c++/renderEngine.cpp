@@ -8,11 +8,11 @@ renderEngine::renderEngine(sf::Vector2f v)
     //window.setMouseCursorVisible(false);
 }
 
-void renderEngine::start(Food food, Level level,vector<Player> players)
+void renderEngine::start(vector<Pickable*> objects, Level level,vector<Player> players)
 {
     window.setFramerateLimit(12);
     window.clear(sf::Color(0,0,0));
-    food.draw(window, level);
+    for(int i = 0; i < (int)objects.size(); i++){objects[i]->draw(window, level);}
     for(int i = 0; i < (int)players.size(); i++)players[i].draw(window, level);
     window.display();
 }

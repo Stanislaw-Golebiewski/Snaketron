@@ -7,7 +7,7 @@
 #include <vector>
 
 using namespace std;
-
+enum Type{TIME, INVISIBLE, GROW, CHANGE};
 class Renderable
 {
 public:
@@ -29,7 +29,7 @@ public:
     Player();
     Player(sf::Vector2f,sf::Vector2f,sf::Vector2f,Direction);
     ~Player();
-    void update();// updates direction, base in input
+    void update();// updates direction, based on input
     void move();
     void draw(sf::RenderWindow&, Level);
     void kill();

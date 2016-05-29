@@ -9,6 +9,8 @@ Game::Game(Vector2f v):render(v), level(v), men(v)
     level.loadFromFile("basic_map.txt");
     game_state = MENU;
     window_size = v;
+    Pickable *p = new Food;
+    objects.push_back(p);
 }
 
 Game::~Game()
@@ -37,6 +39,9 @@ void Game::input()
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {render.window.close();game_state = END;}
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) game_state = GAME;
+            break;
+        default:
+            game_state = END;
             break;
     }
 }

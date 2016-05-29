@@ -42,8 +42,8 @@ void Game::game()
     while(render.window.isOpen())
     {
         input();
-        logic.start(level,food,players);
-        render.start(food,level,players);
+        logic.start(objects, level, players);
+        render.start(objects, level, players);
     }
 }
 

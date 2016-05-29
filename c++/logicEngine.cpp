@@ -1,15 +1,24 @@
 #include "headers/logicEngine.h"
 
 using namespace std;
-void logicEngine::start(Level &level, Food &food, vector<Player> &players)
+
+logicEngine::logicEngine(){ srand((unsigned) time(NULL)); power_up_timer = rand()%150 + 200;}
+
+void logicEngine::start(vector<Pickable*> &objects, Level &level, vector<Player> &players)
 {
+    for(int i = 0; i < (int)objects.size(); i++){cout << objects[i]->getX() << " " << objects[i]->getY() << endl;}
+    if(power_up_timer == 0)
+    {
+        power_up_timer = rand()%300 + 200;
+        pickNewPowerUp(objects, new_empty_field(level, players));
+    }
+    else power_up_timer--;
     for(int i = 0; i < (int)players.size(); i++)players[i].move();
     for(int i = 0; i < (int)players.size(); i++)
     {
-        if(snake_picked(food,players[i]))
+        if(snake_picked(objects[0],players[i]))
         {
-            players[i].pick_food();
-            food.pick(new_empty_field(level,players));
+            objects[0]->pick(new_empty_field(level,players),players[i]);
         }
     }
     for(int i = 0; i < (int)players.size(); i++)
@@ -17,11 +26,11 @@ void logicEngine::start(Level &level, Food &food, vector<Player> &players)
         if(!players[i].isAlive())continue;
         if(snake_collided(level,players,i)){cout << "Snake " << i << " collided" << endl; players[i].kill();}
     }
+
 }
 
 sf::Vector2f logicEngine::new_empty_field(Level level, vector<Player> &players)
 {
-    srand((unsigned) time(NULL));
     int a = 100;
     bool found = false;
     int x,y;
@@ -37,16 +46,17 @@ sf::Vector2f logicEngine::new_empty_field(Level level, vector<Player> &players)
     return V;
 }
 
-bool logicEngine::snake_picked(Food food ,Player snake)
+bool logicEngine::snake_picked(Pickable *p ,Player snake)
 {
     for(int i = 0; i < (int)snake.snake.size(); i++)
     {
-        if(food.getX() == snake.getX() && food.getY() == snake.getY()) return true;
+        if(p->getX() == snake.getX() && p->getY() == snake.getY()) return true;
     }
     return false;
 }
 
-bool logicEngine::snake_collided(Level level, vector<Player> players, short id)
+bool logicEngine::snake_collided(Level level, vector<Player> players, short
+                                 id)
 {
     short playerX = players[id].getX();
     short playerY = players[id].getY();
@@ -62,4 +72,13 @@ bool logicEngine::snake_collided(Level level, vector<Player> players, short id)
         }
     }
     return false;
+}
+
+void logicEngine::pickNewPowerUp(vector<Pickable*> &objects, sf::Vector2f v)
+{
+    Pickable *p;
+    objects.push_back(p);
+    objects[objects.size()-1] = new PowerUp(INVISIBLE);
+    objects[objects.size()-1]->setX(v.x);
+    objects[objects.size()-1]->setY(v.y);
 }

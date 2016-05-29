@@ -28,7 +28,6 @@ public:
     logicEngine logic;
     Event event;
     Level level;
-    Food food;
     Menu men;
 
     void setPlayers(short);

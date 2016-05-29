@@ -14,7 +14,7 @@ public:
     sf::RenderWindow window;
 
     renderEngine(sf::Vector2f);
-    void start(Food,Level,vector<Player>);//render all drawable elements during game
+    void start(vector<Pickable*>,Level,vector<Player>);//render all drawable elements during game
     void menu(Menu);//render menu
 };
 #endif // _renderEngine_H
